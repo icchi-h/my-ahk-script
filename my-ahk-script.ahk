@@ -16,7 +16,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; left alt+ikjlでカーソルキー
+; left alt+i,k,j,lでカーソルキー
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <!i::
   Send,{Up}
@@ -30,6 +30,17 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <!l::
   Send,{Right}
   return
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; left alt+E,HでEnd Home
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<!e::
+  Send,{End}
+  return
+<!h::
+  Send,{Home}
+  return
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 左右 Alt キーの空打ちで IME の OFF/ON を切り替える
