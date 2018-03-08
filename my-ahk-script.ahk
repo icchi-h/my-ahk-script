@@ -15,9 +15,20 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; 無変換、変換、をALTに
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+sc07B::Send,Alt
+sc079::Send,{RAlt}
+sc070::Send,{RAlt}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Ctrl + q で閉じる
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+^q::WinClose,A
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Ctrl+shift+H/L で 仮想デスクトップ切り替え
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Virtual desktop
 ^+h::Send,#^{Left}
 ^+l::Send,#^{Right}
 
@@ -55,11 +66,14 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; 右 Alt キーの空打ちで IME を「かな」に切り替え
 ; Alt キーを押している間に他のキーを打つと通常の Alt キーとして動作
 ;
-; AutoHotkey: v1.1.24.05
+; AutoHotkey: v1.1.26.01
 ; Author:     karakaram   http://www.karakaram.com/alt-ime-on-off
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 #Include ./IME.ahk
+
+; Razer Synapseなど、キーカスタマイズ系のツールを併用しているときのエラー対策
+#MaxHotkeysPerInterval 350
 
 ; 主要なキーを HotKey に設定し、何もせずパススルーする
 *~a::
@@ -70,10 +84,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 *~f::
 *~g::
 *~h::
-*~i::
-*~j::
-*~k::
-*~l::
+;*~i::
+;*~j::
+;*~k::
+;*~l::
 *~m::
 *~n::
 *~o::
