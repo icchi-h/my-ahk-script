@@ -17,9 +17,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 無変換、変換、をALTに
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-sc07B::Send,Alt
-sc079::Send,{RAlt}
-sc070::Send,{RAlt}
+sc07B::Send,{vkF3sc029}
+sc079::Send,{vkF3sc029}
+sc070::Send,{vkF3sc029}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Ctrl + q で閉じる
