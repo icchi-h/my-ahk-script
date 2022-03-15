@@ -71,7 +71,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
   Return
 
-; MacのCmd操作に揃える
+; AltキーのCmd化 (実際にはCtrl)
+
 <!q::WinClose,A
 <!w::Send,^w
 <!r::Send,{F5}
@@ -85,6 +86,14 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <!c::Send,^c
 <!v::Send,^v
 <!n::Send,^n
+LAlt & Enter::Send,^{Enter}
+
+; Mac風ショートカット
+
+^a::Send,{Home}
+^e::Send,{End}
+^+a::Send,+{Home}
+^+e::Send,+{End}
 
 
 
