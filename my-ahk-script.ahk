@@ -19,7 +19,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <^h::
   Send,{Left}
   Return
-<!l::
+;<!l::
 <^l::
   Send,{Right}
   Return
@@ -72,11 +72,21 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
   Return
 
 ; MacのCmd操作に揃える
+<!q::WinClose,A
+<!w::Send,^w
+<!r::Send,{F5}
+<!t::Send,^t
+<!y::Send,^y
+<!a::Send,^a
+<!s::Send,^s
+<!l::Send,^l
+<!z::Send,^z
 <!x::Send,^x
 <!c::Send,^c
 <!v::Send,^v
-<!z::Send,^z
-<!t::Send,^t
+<!n::Send,^n
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; IME
