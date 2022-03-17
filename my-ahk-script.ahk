@@ -85,8 +85,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <!x::Send,^x
 <!c::Send,^c
 <!v::Send,^v
+<!b::Send,^b
 <!n::Send,^n
-LAlt & Enter::Send,^{Enter}
 
 ; Mac風ショートカット
 
@@ -94,6 +94,7 @@ LAlt & Enter::Send,^{Enter}
 ^e::Send,{End}
 ^+a::Send,+{Home}
 ^+e::Send,+{End}
+LAlt & Enter::Send,^{Enter}
 
 
 
