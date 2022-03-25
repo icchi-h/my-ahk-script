@@ -68,8 +68,14 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <+!i::
 <+^i::
   Send,+{End}
-
   Return
+
+; OneNoteでのみ有効 (UAC無効&右クリック「Run with UI Access」から起動)
+#IfWinActive, ahk_class Framework::CFrame
+  <^j::SendPlay,{Down}
+  <^k::SendPlay,{Up}
+
+#IfWinActive
 
 ; AltキーのCmd化 (実際にはCtrl)
 
