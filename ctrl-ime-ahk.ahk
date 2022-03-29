@@ -1,10 +1,15 @@
-; 左右 Alt キーの空打ちで IME の OFF/ON を切り替える
+; 左右 Ctrl キーの空打ちで IME の OFF/ON を切り替える
 ;
-; 左 Alt キーの空打ちで IME を「英数」に切り替え
-; 右 Alt キーの空打ちで IME を「かな」に切り替え
-; Alt キーを押している間に他のキーを打つと通常の Alt キーとして動作
+; 左 Ctrl キーの空打ちで IME を「英数」に切り替え
+; 右 Ctrl キーの空打ちで IME を「かな」に切り替え
+; Ctrl キーを押している間に他のキーを打つと通常の Ctrl キーとして動作
 ;
+; AutoHotkey: v1.1.33.00
+; Author:     Miraium  https://github.com/Miraium/ctrl-ime-ahk
+; 
+; 以下フォーク元
 ; Author:     karakaram   http://www.karakaram.com/alt-ime-on-off
+; Author:     moremorefor  https://github.com/moremorefor/ctrl-ime-ahk
 
 #Include IME.ahk
 
@@ -94,6 +99,8 @@
 *~Esc::
 *~Tab::
 *~Space::
+*~LAlt::
+*~RAlt::
 *~Left::
 *~Right::
 *~Up::
@@ -105,23 +112,26 @@
 *~End::
 *~PgUp::
 *~PgDn::
+*~LCtrl::
+*~RCtrl::
+*~Backspace::
     Return
 
-; 上部メニューがアクティブになるのを抑制
-*~LAlt::Send {Blind}{vk07}
-*~RAlt::Send {Blind}{vk07}
-
-; 左 Alt 空打ちで IME を OFF
-LAlt up::
-    if (A_PriorHotkey == "*~LAlt")
+; 左 Ctrl 空打ちで IME を OFF
+LCtrl up::
+    if (A_PriorHotkey == "*~LCtrl")
     {
+        ; IME on状態で入力途中（日本語入力途中）に押した場合には、無反応になるように設定
+        if IME_GetConverting() >= 1 {
+            Return
+        }
         IME_SET(0)
     }
     Return
 
-; 右 Alt 空打ちで IME を ON
-RAlt up::
-    if (A_PriorHotkey == "*~RAlt")
+; 右 Ctrl 空打ちで IME を ON
+RCtrl up::
+    if (A_PriorHotkey == "*~RCtrl")
     {
         IME_SET(1)
     }

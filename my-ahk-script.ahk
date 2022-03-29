@@ -11,234 +11,61 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; My Setting
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Ctrl + q で閉じる
-^q::WinClose,A
+; 上部メニューがアクティブになるのを抑制
+*~LAlt::Send {Blind}{vk07}
+*~RAlt::Send {Blind}{vk07}
 
-; LAlt/LCtrl + hjklでカーソルキー
+; LAlt + hjklでカーソルキー
 <!h::
-<^h::
   Send,{Left}
   Return
-;<!l::
-<^l::
+<!l::
   Send,{Right}
   Return
 <!j::
-<^j::
   Send,{Down}
   Return
 <!k::
-<^k::
   Send,{Up}
   Return
 
 ; カーソルのシフト対応
 <+!h::
-<+^h::
   Send,+{Left}
   Return
 <+!l::
-<+^l::
   Send,+{Right}
   Return
 <+!j::
-<+^j::
   Send,+{Down}
   Return
 <+!k::
-<+^k::
   Send,+{Up}
-  Return
-
-; LAlt/LCtrl + uiでHome/End
-<!u::
-<^u::
-  Send,{Home}
-  Return
-<!i::
-<^i::
-  Send,{End}
-  Return
-
-; カーソルのシフト対応
-<+!u::
-<+^u::
-  Send,+{Home}
-  Return
-<+!i::
-<+^i::
-  Send,+{End}
   Return
 
 ; OneNoteでのみ有効 (UAC無効&右クリック「Run with UI Access」から起動)
 #IfWinActive, ahk_class Framework::CFrame
-  <^j::SendPlay,{Down}
-  <^k::SendPlay,{Up}
-
+  <!j::SendPlay,{Down}
+  <!k::SendPlay,{Up}
 #IfWinActive
 
-; AltキーのCmd化 (実際にはCtrl)
+;Alt + A/EでHome/End
+!a::Send,{Home}
+!e::Send,{End}
+!+a::Send,+{Home}
+!+e::Send,+{End}
 
-<!q::WinClose,A
-<!w::Send,^w
-<!r::Send,{F5}
-<!t::Send,^t
-<!+t::Send,+^t
-<!y::Send,^y
-<!a::Send,^a
-<!s::Send,^s
-<!l::Send,^l
-<!z::Send,^z
-<!x::Send,^x
-<!c::Send,^c
-<!v::Send,^v
-<!b::Send,^b
-<!n::Send,^n
+;CtrlキーのCmd化
+^q::WinClose,A
+^r::Send,{F5}
 
-; Mac風ショートカット
+; CtrlキーのAlt化
+LCtrl & Tab::AltTab
 
-^a::Send,{Home}
-^e::Send,{End}
-^+a::Send,+{Home}
-^+e::Send,+{End}
-LAlt & Enter::Send,^{Enter}
+; AltキーのCtrl化
+!c::Send,^c
 
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; IME
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; 左右 Alt キーの空打ちで IME の OFF/ON を切り替える
-;
-; 左 Alt キーの空打ちで IME を「英数」に切り替え
-; 右 Alt キーの空打ちで IME を「かな」に切り替え
-; Alt キーを押している間に他のキーを打つと通常の Alt キーとして動作
-;
-; AutoHotkey: v1.1.26.01
-; Author:     karakaram   http://www.karakaram.com/alt-ime-on-off
-
-; ※なぜか同一ファイルだと右Altが動作しないのでIME関連は別ファイルで起動
-
-;#Include IME.ahk
-;
-;; Razer Synapseなど、キーカスタマイズ系のツールを併用しているときのエラー対策
-;#MaxHotkeysPerInterval 350
-;
-;; 主要なキーを HotKey に設定し、何もせずパススルーする
-;*~a::
-;*~b::
-;*~c::
-;*~d::
-;*~e::
-;*~f::
-;*~g::
-;*~h::
-;*~i::
-;*~j::
-;*~k::
-;*~l::
-;*~m::
-;*~n::
-;*~o::
-;*~p::
-;*~q::
-;*~r::
-;*~s::
-;*~t::
-;*~u::
-;*~v::
-;*~w::
-;*~x::
-;*~y::
-;*~z::
-;*~1::
-;*~2::
-;*~3::
-;*~4::
-;*~5::
-;*~6::
-;*~7::
-;*~8::
-;*~9::
-;*~0::
-;*~F1::
-;*~F2::
-;*~F3::
-;*~F4::
-;*~F5::
-;*~F6::
-;*~F7::
-;*~F8::
-;*~F9::
-;*~F10::
-;*~F11::
-;*~F12::
-;*~`::
-;*~~::
-;*~!::
-;*~@::
-;*~#::
-;*~$::
-;*~%::
-;*~^::
-;*~&::
-;*~*::
-;*~(::
-;*~)::
-;*~-::
-;*~_::
-;*~=::
-;*~+::
-;*~[::
-;*~{::
-;*~]::
-;*~}::
-;*~\::
-;*~|::
-;*~;::
-;*~'::
-;*~"::
-;*~,::
-;*~<::
-;*~.::
-;*~>::
-;*~/::
-;*~?::
-;*~Esc::
-;*~Tab::
-;*~Space::
-;*~Left::
-;*~Right::
-;*~Up::
-;*~Down::
-;*~Enter::
-;*~PrintScreen::
-;*~Delete::
-;*~Home::
-;*~End::
-;*~PgUp::
-;*~PgDn::
-;    Return
-;
-;; 上部メニューがアクティブになるのを抑制
-;*~LAlt::Send {Blind}{vk07}
-;*~RAlt::Send {Blind}{vk07}
-;
-;; 左 Alt 空打ちで IME を OFF
-;LAlt up::
-;    if (A_PriorHotkey == "*~LAlt")
-;    {
-;        IME_SET(0)
-;    }
-;    Return
-;
-;; 右 Alt 空打ちで IME を ON
-;RAlt up::
-;    if (A_PriorHotkey == "*~RAlt")
-;    {
-;        IME_SET(1)
-;    }
-;    Return
 
 
 ; OS側で対応したため無効
