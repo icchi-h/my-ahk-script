@@ -60,7 +60,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ^r::Send,{F5}
 
 ; CtrlキーのAlt化
-LCtrl & Tab::AltTab
+^Tab::!Tab ;Alt押し続けなくてもメニュー表示
++^Tab::+!Tab
 
 ; AltキーのCtrl化
 !c::Send,^c
