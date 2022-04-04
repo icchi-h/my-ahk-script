@@ -59,13 +59,47 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ^q::WinClose,A
 ^r::Send,{F5}
 
-; CtrlキーのAlt化
-^Tab::!Tab ;Alt押し続けなくてもメニュー表示
+; CtrlキーからAltTabMenu
+;Ctrl & Tab::AltTab
+^Tab::!Tab
 +^Tab::+!Tab
-
+;^Tab::
+;    Send, !^{Tab}
+;    IsAltTabMenu := true
+;    Return
+;#If (IsAltTabMenu)
+;  ^h::
+;    Send, {Left}
+;    Return
+;  ^j::
+;    Send, {Down}
+;    Return
+;  ^k::
+;    Send, {Up}
+;    Return
+;  ^l::
+;    Send, {Right}
+;    Return
+;  Enter::
+;    Send, {Enter}
+;    IsAltTabMenu := false
+;    Return
+;  Space::
+;    Send, {Space}
+;    IsAltTabMenu := false
+;    Return
+;  Esc::
+;    Send, {Esc}
+;    IsAltTabMenu := false
+;    Return
+;
+;  IsAltTabMenu := false
+;  Return
+;#If
+  
 ; AltキーのCtrl化
 !c::Send,^c
-
+!v::Send,^v
 
 
 
