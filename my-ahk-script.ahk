@@ -8,7 +8,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #UseHook
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; My Setting
+; General Setting
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 上部メニューがアクティブになるのを抑制
@@ -42,12 +42,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 <+!k::
   Send,+{Up}
   Return
-
-; OneNoteでのみ有効 (UAC無効&右クリック「Run with UI Access」から起動)
-#IfWinActive, ahk_class Framework::CFrame
-  <!j::SendPlay,{Down}
-  <!k::SendPlay,{Up}
-#IfWinActive
 
 ;Alt + A/EでHome/End
 !a::Send,{Home}
@@ -96,10 +90,34 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;  IsAltTabMenu := false
 ;  Return
 ;#If
-  
+
 ; AltキーのCtrl化
 !c::Send,^c
 !v::Send,^v
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Application
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; OneNote
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; UAC無効&右クリック「Run with UI Access」から起動
+#IfWinActive, ahk_class Framework::CFrame
+  <!j::SendPlay,{Down}
+  <!k::SendPlay,{Up}
+#IfWinActive
+
+
+; Outlook
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#IfWinActive,ahk_exe OUTLOOK.EXE
+; 検索補完展開時にAltを打つと消えてしまうのでCtrlで対応
+  <^j::Send,{Down}
+  <^k::Send,{Up}
+#IfWinActive
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 
