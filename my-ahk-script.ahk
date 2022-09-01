@@ -92,8 +92,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;#If
 
 ; AltキーのCtrl化
-!c::Send,^c
-!v::Send,^v
+;!c::Send,^c
+;!v::Send,^v
 
 
 
@@ -104,19 +104,19 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; OneNote
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; UAC無効&右クリック「Run with UI Access」から起動
-#IfWinActive, ahk_class Framework::CFrame
-  <!j::SendPlay,{Down}
-  <!k::SendPlay,{Up}
-#IfWinActive
+;#IfWinActive, ahk_class Framework::CFrame
+;  <!j::SendPlay,{Down}
+;  <!k::SendPlay,{Up}
+;#IfWinActive
 
 
 ; Outlook
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-#IfWinActive,ahk_exe OUTLOOK.EXE
-; 検索補完展開時にAltを打つと消えてしまうのでCtrlで対応
-  <^j::Send,{Down}
-  <^k::Send,{Up}
-#IfWinActive
+;#IfWinActive,ahk_exe OUTLOOK.EXE
+;; 検索補完展開時にAltを打つと消えてしまうのでCtrlで対応
+;  <^j::Send,{Down}
+;  <^k::Send,{Up}
+;#IfWinActive
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -157,3 +157,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; ]::\              ;                   []] -> \
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Template
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#UseHook Off
