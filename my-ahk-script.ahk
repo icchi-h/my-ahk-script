@@ -49,6 +49,23 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 !+a::Send,+{Home}
 !+e::Send,+{End}
 
+;LAlt + Num(6-0)でF6-F10
+<!6::
+  Send,{F6}
+  Return
+<!7::
+  Send,{F7}
+  Return
+<!8::
+  Send,{F8}
+  Return
+<!9::
+  Send,{F9}
+  Return
+<!0::
+  Send,{F10}
+  Return
+
 ;CtrlキーのCmd化
 ^q::WinClose,A
 ^r::Send,{F5}
