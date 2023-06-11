@@ -118,6 +118,11 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; Application
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; VSCode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+!c::Send,^c
+
+
 ; OneNote
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; UAC無効&右クリック「Run with UI Access」から起動
